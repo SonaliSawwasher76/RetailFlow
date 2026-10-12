@@ -1,0 +1,5 @@
+@model Product
+@{ ViewData["Title"] = "Product details"; }
+<p class="eyebrow">INVENTORY</p><h1>@Model.Name</h1><p class="muted">Product details and stock summary.</p>
+<div class="detail-card"><dl><dt>Category</dt><dd>@Model.Category</dd><dt>Quantity</dt><dd>@Model.Quantity</dd><dt>Unit price</dt><dd>@Model.UnitPrice.ToString("C")</dd><dt>Stock value</dt><dd>@Model.StockValue.ToString("C")</dd><dt>Description</dt><dd>@(string.IsNullOrWhiteSpace(Model.Description) ? "—" : Model.Description)</dd><dt>Last updated</dt><dd>@Model.UpdatedAt.ToLocalTime().ToString("dd MMM yyyy, HH:mm")</dd></dl>
+<div class="form-actions"><a class="button" asp-action="Edit" asp-route-id="@Model.Id">Edit product</a><a class="button button-light" asp-action="Index">Back to inventory</a></div></div>

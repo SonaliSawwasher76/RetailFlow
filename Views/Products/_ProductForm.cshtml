@@ -1,0 +1,7 @@
+@model Product
+<div asp-validation-summary="ModelOnly" class="validation"></div><div class="form-grid">
+<div class="field"><label asp-for="Name"></label><input asp-for="Name" /><span asp-validation-for="Name"></span></div>
+<div class="field"><label asp-for="Category"></label><input asp-for="Category" placeholder="e.g. Accessories" /><span asp-validation-for="Category"></span></div>
+<div class="field"><label asp-for="Quantity"></label><input asp-for="Quantity" type="number" min="0" /><span asp-validation-for="Quantity"></span></div>
+<div class="field"><label asp-for="UnitPrice"></label><input asp-for="UnitPrice" type="number" min="0.01" step="0.01" /><span asp-validation-for="UnitPrice"></span></div>
+<div class="field full"><label asp-for="Description"></label><textarea asp-for="Description" rows="3"></textarea><span asp-validation-for="Description"></span></div></div>

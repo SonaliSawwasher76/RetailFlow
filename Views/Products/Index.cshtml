@@ -1,0 +1,11 @@
+@model IEnumerable<Product>
+@{ ViewData["Title"] = "Inventory"; var categories = ViewData["Categories"] as List<string> ?? new List<string>(); }
+<section class="page-heading"><div><p class="eyebrow">INVENTORY MANAGEMENT</p><h1>Product inventory</h1><p class="muted">Track products, quantities and stock value.</p></div><a class="button" asp-action="Create">+ Add product</a></section>
+<div class="stats"><div class="stat-card"><span>Products</span><strong>@Model.Count()</strong></div><div class="stat-card"><span>Total units</span><strong>@Model.Sum(p => p.Quantity)</strong></div><div class="stat-card"><span>Total stock value</span><strong>@Model.Sum(p => p.StockValue).ToString("C")</strong></div></div>
+<form method="get" class="filters"><input type="text" name="search" value="@ViewData["Search"]" placeholder="Search name or category..." />
+<select name="category"><option value="">All categories</option>@foreach (var item in categories) { <option value="@item" selected="@(item == (string?)ViewData["Category"])">@item</option> }</select>
+<button class="button" type="submit">Filter</button><a class="button button-light" asp-action="Index">Reset</a></form>
+<div class="table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Quantity</th><th>Unit price</th><th>Stock value</th><th>Actions</th></tr></thead><tbody>
+@if (!Model.Any()) { <tr><td colspan="6" class="empty">No products found. Add your first product to get started.</td></tr> }
+@foreach (var product in Model) { <tr><td><strong>@product.Name</strong><small>@product.Description</small></td><td>@product.Category</td><td><span class="quantity @(product.Quantity <= 5 ? "low-stock" : "")">@product.Quantity</span></td><td>@product.UnitPrice.ToString("C")</td><td>@product.StockValue.ToString("C")</td><td class="actions"><a asp-action="Details" asp-route-id="@product.Id">View</a><a asp-action="Edit" asp-route-id="@product.Id">Edit</a><a asp-action="Delete" asp-route-id="@product.Id">Delete</a></td></tr> }
+</tbody></table></div>

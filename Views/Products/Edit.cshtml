@@ -1,0 +1,4 @@
+@model Product
+@{ ViewData["Title"] = "Edit product"; }
+<p class="eyebrow">INVENTORY</p><h1>Edit product</h1><p class="muted">Update the details and save your changes.</p>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-card"><input type="hidden" asp-for="Id" /><partial name="_ProductForm" model="Model" /><div class="form-actions"><button class="button" type="submit">Save changes</button><a class="button button-light" asp-action="Index">Cancel</a></div></form>

@@ -1,0 +1,5 @@
+@model Product
+@{ ViewData["Title"] = "Delete product"; }
+<p class="eyebrow">INVENTORY</p><h1>Delete product</h1><div class="form-card"><p>Are you sure you want to delete <strong>@Model.Name</strong>? This action cannot be undone.</p>
+<dl><dt>Category</dt><dd>@Model.Category</dd><dt>Quantity</dt><dd>@Model.Quantity</dd><dt>Unit price</dt><dd>@Model.UnitPrice.ToString("C")</dd></dl>
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="form-actions"><button class="button button-danger" type="submit">Confirm delete</button><a class="button button-light" asp-action="Index">Cancel</a></form></div>

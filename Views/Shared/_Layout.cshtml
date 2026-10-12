@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - RetailFlow</title><link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /></head>
+<body><header class="topbar"><a class="brand" asp-controller="Products" asp-action="Index">RetailFlow</a>
+<nav><a asp-controller="Products" asp-action="Index">Inventory</a><a asp-controller="Products" asp-action="Create">Add product</a></nav></header>
+<main class="container">@if (TempData["Success"] is string message) { <div class="alert">@message</div> } @RenderBody()</main>
+<footer class="footer">RetailFlow · ASP.NET Core MVC inventory demo</footer>@await RenderSectionAsync("Scripts", required: false)</body></html>
